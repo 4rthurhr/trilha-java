@@ -1,0 +1,66 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class TodoList {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner scanner = new Scanner(System.in);
+		ArrayList<String> tarefas = new ArrayList<>();
+		int opcao = -1;
+		
+		while(opcao != 0) {
+			System.out.println("== MENU ==");
+			System.out.println("1. Adicionar tarefas. ");
+			System.out.println("2. Listar tarefas. ");
+			System.out.println("3. Remover tarefas. ");
+			System.out.println("0. Sair.");
+			System.out.println("Escolha uma opção. ");
+			opcao = scanner.nextInt();
+			scanner.nextLine();
+			
+			switch(opcao) {
+				case 1:
+					System.out.println("Digite a tarefa: ");
+					String novatarefa = scanner.nextLine();
+					tarefas.add(novatarefa);
+					System.out.println("Tarefa adicionada! ");
+					break;
+				case 2:
+					System.out.println("== Tarefas ==");
+					if (tarefas.isEmpty()) {
+						System.out.println("Nenhuma tarefa");
+					}else {
+						for (int i = 0; i < tarefas.size(); i++) {
+							System.out.println((i + 1) + " - " + tarefas.get(i));
+						}
+					break;
+					}
+				case 3:
+					System.out.println("Digite o númerto da tarefa que vai ser removida:");
+					int indice = scanner.nextInt();
+					scanner.nextLine();
+					if (indice > 0 && indice <= tarefas.size()) {
+						tarefas.remove(indice - 1);
+						System.out.println("Tarefa removida.");
+					}else {
+						System.out.println("Número inválido.");
+					}
+					break;
+				case 0:
+					System.out.println("Saindo... ");
+					break;
+				default:
+					System.out.println("Opção inávlida! ");
+					
+			}
+			
+			
+		}
+		
+		scanner.close();
+		
+
+	}
+
+}
